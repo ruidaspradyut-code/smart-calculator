@@ -11,6 +11,28 @@ def clear():
     result_label.config(text='')
 
 
+def get_operators(op):
+    global first_number,operator
+    operator = op
+    result_label.config(text='')
+
+
+def get_result():
+    global first_number,second_number,operator
+    second_number = int(result_label['text'])
+    if operator == '+':
+        result_label.config(text=str(first_number+second_number))
+    elif operator == '-':
+        result_label.config(text=str(first_number-second_number))
+    elif operator == '*':
+        result_label.config(text=str(first_number*sucend_number))
+    else:
+        if second_number == 0:
+            result_label.config(text='error')
+        else:
+            result_label.config(text=str(first_number/second_number))
+
+
 root = Tk()
 root.title("smart calculater")
 root.geometry('560x760')
@@ -38,7 +60,7 @@ btn9.grid(row=1,column=2)
 btn9.config(font=('vardana',28))
 
 
-btn_add = Button(root,text='+',bg='#00a65a',fg='white',width=10,height=4,command= lambda:)
+btn_add = Button(root,text='+',bg='#00a65a',fg='white',width=10,height=4,command= lambda: get_operators('+'))
 btn_add.grid(row=1,column=3)
 btn_add.config(font=('vardana',28))
 
@@ -57,7 +79,7 @@ btn6.grid(row=2,column=2)
 btn6.config(font=('vardana',28))
 
 
-btn_sub = Button(root,text='-',bg='#00a65a',fg='white',width=10,height=4,command= lambda:)
+btn_sub = Button(root,text='-',bg='#00a65a',fg='white',width=10,height=4,command= lambda: get_operator('-'))
 btn_sub.grid(row=2,column=3)
 btn_sub.config(font=('vardana',28))
 
@@ -76,7 +98,7 @@ btn3.grid(row=3,column=2)
 btn3.config(font=('vardana',28))
 
 
-btn_multi = Button(root,text='*',bg='#00a65a',fg='white',width=10,height=4,command= lambda:)
+btn_multi = Button(root,text='*',bg='#00a65a',fg='white',width=10,height=4,command= lambda:get_operator('*'))
 btn_multi.grid(row=3,column=3)
 btn_multi.config(font=('vardana',28))
 
@@ -90,12 +112,12 @@ btn0.grid(row=4,column=1)
 btn0.config(font=('vardana',28))
 
 
-btn_div = Button(root,text='/',bg='#00a65a',fg='white',width=10,height=4,command= lambda:)
+btn_div = Button(root,text='/',bg='#00a65a',fg='white',width=10,height=4,command= lambda:get_operator('/'))
 btn_div.grid(row=4,column=2)
 btn_div.config(font=('vardana',28))
 
 
-btn_equals = Button(root,text='+',bg='#00a65a',fg='white',width=10,height=4,command= lambda:)
+btn_equals = Button(root,text='+',bg='#00a65a',fg='white',width=10,height=4,command=get_result)
 btn_equals.grid(row=1,column=0)
 btn_equals.config(font=('vardana',28))
 
